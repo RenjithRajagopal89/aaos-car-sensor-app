@@ -40,6 +40,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -56,6 +57,14 @@ import kotlin.math.roundToInt
 fun SdvHome(viewModel: SdvHomeViewModel) {
     Box(modifier = Modifier.fillMaxSize()) {
         //CarControlButtonView(modifier = Modifier.align(Alignment.TopStart), viewModel)
+
+        CarSpeed(
+            viewModel,
+            Modifier
+                .fillMaxWidth(0.4f)
+                .fillMaxHeight()
+        )
+
         Row(modifier = Modifier.align(Alignment.Center)) {
             MovingRoad(viewModel)
             CarImage(
@@ -64,8 +73,6 @@ fun SdvHome(viewModel: SdvHomeViewModel) {
             )
             MovingRoad(viewModel)
         }
-
-        CarSpeed(viewModel, Modifier.align(Alignment.TopCenter))
 
         CarInfo(
             viewModel = viewModel,
@@ -79,13 +86,25 @@ fun SdvHome(viewModel: SdvHomeViewModel) {
 
 @Composable
 private fun CarSpeed(viewModel: SdvHomeViewModel, modifier: Modifier) {
-    val speed by viewModel.speed.collectAsState()
-    Text(
-        modifier = modifier,
-        text = "${speed.value.roundToInt()} mph",
-        style = TextStyle(fontSize = 30.sp),
-        color = Color.Red
-    )
+    Box(modifier = modifier) {
+
+        val speed by viewModel.speed.collectAsState()
+        Column(
+            modifier = Modifier.align(Alignment.Center),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "${speed.value.roundToInt()}",
+                style = TextStyle(fontSize = 90.sp, fontWeight = FontWeight.ExtraBold),
+                color = Color.White
+            )
+            Text(
+                text = "MPH",
+                style = TextStyle(fontSize = 70.sp, fontWeight = FontWeight.ExtraBold),
+                color = Color.White
+            )
+        }
+    }
 }
 
 @Composable
