@@ -17,6 +17,15 @@ android {
 
     }
 
+    signingConfigs {
+        getByName("debug") {
+            keyAlias = "platform"
+            keyPassword = "password"
+            storeFile = file("../keystore/platform.keystore")
+            storePassword = "password"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -24,6 +33,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = true
         }
     }
     compileOptions {
@@ -41,6 +54,7 @@ android {
         dataBinding = true
         compose = true
     }
+
 }
 
 dependencies {
