@@ -197,19 +197,19 @@ private fun CarInfo(viewModel: SdvHomeViewModel, modifier: Modifier) {
 
         Column {
             Row(Modifier.fillMaxWidth()) {
-                TableCell(text = "Make", weight = 0.4f)
+                TableCell(text = "MAKE", weight = 0.4f)
                 TableCell(text = carInfo.make, weight = 0.6f)
             }
             Row(Modifier.fillMaxWidth()) {
-                TableCell(text = "Model", weight = 0.4f)
+                TableCell(text = "MODEL", weight = 0.4f)
                 TableCell(text = carInfo.model, weight = 0.6f)
             }
             Row(Modifier.fillMaxWidth()) {
-                TableCell(text = "Model Year", weight = 0.4f)
+                TableCell(text = "MODEL YEAR", weight = 0.4f)
                 TableCell(text = "${carInfo.modelYear}", weight = 0.6f)
             }
             Row(Modifier.fillMaxWidth()) {
-                TableCell(text = "Vin", weight = 0.4f)
+                TableCell(text = "VIN", weight = 0.4f)
                 TableCell(text = carInfo.vin, weight = 0.6f)
             }
         }
@@ -228,7 +228,7 @@ fun RowScope.TableCell(
             .weight(weight)
             .padding(8.dp),
         color = Color.White,
-        style = TextStyle(fontSize = 25.sp)
+        style = TextStyle(fontSize = 25.sp, fontWeight = FontWeight.W800)
     )
 }
 
